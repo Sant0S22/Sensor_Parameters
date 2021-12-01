@@ -3,7 +3,7 @@
 import rospy
 from std_msgs.msg import String
 from omron_2jcie_bu01 import Omron2JCIE_BU01
-from datetime import datetime
+#from datetime import datetime
 
 
 def read() :
@@ -15,7 +15,7 @@ def read() :
     
     while not rospy.is_shutdown() :
     	data = sensor.latest_data_long()
-    	stringa = str(data) + datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+    	stringa = str(data) #+ datetime.now().strftime('%d-%m-%Y %H:%M:%S')
     	rospy.loginfo(stringa)
     	publisher.publish(stringa)
     	rate.sleep()

@@ -17,7 +17,7 @@ def callback_Coordinates(data) :
 	flag = True
 	while flag :
 	    if merged == "" and last_write == 1
-	        merged = x + y
+	        merged = x + " " + y
 	        last_write = 0
 	        flag = False
 	    else 
@@ -28,7 +28,7 @@ def callback_Parameters(data) :
     flag = True
     while flag :
     	if merged != "" and last_write == 0 
-    	    merged = merged + str(data)
+    	    merged = merged + " " + str(data)
     	    last_write = 0
     	    flag = False
     	else
@@ -44,7 +44,7 @@ def transmit_merged_dates (info) :
 
 
 def merge() :
-	rospy.init_node("Merge Coordinates & Parameters " , anonymous = True )
+	rospy.init_node("Merge Coordinates & Parameters" , anonymous = True )
 	rospy.Subscriber("Parameters", String , callback_Parameters )
 	rospy.Subscriber("Coordinates", String , callback_Coordinates )
 	publisher = rospy.Publisher("Merged Data" , String , queue_size = 22)

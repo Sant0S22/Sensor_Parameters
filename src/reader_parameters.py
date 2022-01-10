@@ -5,6 +5,8 @@ from std_msgs.msg import String
 from omron_2jcie_bu01 import Omron2JCIE_BU01
 #from datetime import datetime
 
+#Per modificare i parametri interessati vedere questo codice
+#https://github.com/nobrin/omron-2jcie-bu01/blob/master/examples/measure_serial.py
 
 def read() :
     publisher = rospy.Publisher("Parameters" , String , queue_size = 22 )
@@ -15,7 +17,8 @@ def read() :
     
     while not rospy.is_shutdown() :
     	data = sensor.latest_data_long()
-    	stringa = str(data) #+ datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+    	#stringa = str(data) #+ datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+        stringa = "Temp: " + data.temperature
     	rospy.loginfo(stringa)
     	publisher.publish(stringa)
     	rate.sleep()

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import rospy
 import psycopg2
 from config_db import config
 
@@ -17,9 +16,25 @@ def connect_db() :
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
 
-
-if __name__ = "__main__" :
-	try :
-		connect_db()
-	except rospy.ROSInterruptException :
-		pass
+#Sql is a string that contain a SQL string
+def select_query ( sql ) :
+    try : 
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        id = cursor.fetchone()
+        cursor.close()
+        return id
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    
+#Sql is a string that contain a SQL string
+def insert_database ( sql ) :
+    try :
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        id = cursor.fetchone()[0]
+        conn.commit()
+        cursor.close()
+        return id
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)

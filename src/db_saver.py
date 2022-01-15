@@ -16,19 +16,19 @@ def initialize() :
 	except (Exception, psycopg2.DatabaseError) as error:
         print(error)
 
-def position_exist ( x , y , conn ) :
+def position_exist ( x , y  ) :
 	sql = "SELECT id FROM punti WHERE x = " + x + " AND y = " + y 
-	id = db_persistance.select_query_id(sql)
-	return id	
+	id = db_persistance.select_query_id(sql , conn)
+	return id
 
 def create_position ( x , y ) :
 	sql = "INSERT INTO punti ( x , y ) values ( " + x + " , " + y + " ) RETURNING id;"
-	id = db_persistance.insert_database(sql)
+	id = db_persistance.insert_database(sql , conn)
 	return id
 
 def save_date ( id_pos , temp , giorno , orario ) : 
 	sql = "INSERT INTO temperature ( temperatura , data_misurazione , orario_misurazione , posizione_fk) values ( %s , %s , %s , %s) RETURNING id; "
-	id = db_persistance.insert_database(sql)
+	id = db_persistance.insert_database(sql , conn)
 	return id
 
 def callback_saver(data) :

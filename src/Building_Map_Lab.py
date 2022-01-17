@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import numpy as np 
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -80,4 +82,4 @@ if __name__ == "__main__" :
 
   #Salva L'immagine in formato png 
   image = Image.fromarray(map)
-  image.save("/map/ouput/Lab_map.png")
+  image.save("/map/output/Lab_map.png")

@@ -1,5 +1,0 @@
-
-pip install matplotlib
-pip install numpy
-pip install opencv-python
-pip install psycopg2

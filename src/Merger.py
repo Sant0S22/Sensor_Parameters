@@ -5,9 +5,16 @@ from time import sleep
 from std_msgs.msg import String
 from datetime import datetime
 
+#-------------------------------------------
+#---------Global Variables------------------
+#-------------------------------------------
+
 merged = ""
-last_write = 1 #Se 1 ultima write dei parametri , se 0 ultima write delle coordinate
+#Se il valore è 1 sono stati scritti per ultimi i parametri , Se invece 0 Sono stati scritte le coordinate
+last_write = 1 
 publisher = None
+
+#-------------------------------------------
 
 
 def callback_Coordinates(data) :	
@@ -15,24 +22,27 @@ def callback_Coordinates(data) :
 	x = coordinate[0]
 	y = coordinate[1]
 	flag = True
+	#Si rimane nel ciclo fintanto la stringa non è vuota ed è il suo turno di scrivere altrimenti aspetti 5 secondi
 	while flag :
 	    if merged == "" and last_write == 1
 	        merged = x + " " + y
 	        last_write = 0
 	        flag = False
 	    else 
-	        sleep(0.5)
+	        sleep(5)
 
 
 def callback_Parameters(data) :
     flag = True
+    #Si rimane nel ciclo fintanto la stringa non è con dei parametri ed è il suo turno di scrivere altrimenti aspetti 5 secondi
     while flag :
     	if merged != "" and last_write == 0 
     	    merged = merged + " " + str(data)
-    	    last_write = 0
+    	    last_write = 1
     	    flag = False
     	else
-    	    sleep(0.5)
+    	    sleep(5)
+   	#Quando esci dal ciclo trasmetti il dato all'altro nodo e azzeri la stringa
     transmit_merged_dates(merged)
     merged = "" 	    
 

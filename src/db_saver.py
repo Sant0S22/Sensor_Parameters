@@ -16,7 +16,7 @@ def initialize() :
 	except (Exception, psycopg2.DatabaseError) as error:
         print(error)
 
-def position_exist ( x , y  ) :
+def position_exist ( x , y ) :
 	sql = "SELECT id FROM punti WHERE x = " + x + " AND y = " + y 
 	id = db_persistance.select_query_id(sql , conn)
 	return id
@@ -33,17 +33,18 @@ def save_date ( id_pos , temp , giorno , orario ) :
 
 def callback_saver(data) :
 	#Dato tipo che mi arriva :
-	# *coordinataX* *coordinataY* Temp: *temperatura* gg-mm-yyyy hh-mm-ss
+	#       0             1          2      3          4          5          6
+	# *coordinataX* *coordinataY* *theta* Temp: *temperatura* gg-mm-yyyy hh:mm:ss
 	dati = data.split(" ")
 	x = dati[0]
 	y = dati[1]
-	temp = dati [3]
-	giorno = dati[4]
-	orario = dati[5]
+	temp = dati [4]
+	giorno = dati[5]
+	orario = dati[6]
 	id_pos = position_exist( x , y )
 	if ( id_pos == None ) :
 		id_pos = create_position( x , y )
-	save_date( id_pos , temp , giorno , orario )
+	save_date( id_pos[0] , temp , giorno , orario )
 
 
 if __name__ == "__main__" : 

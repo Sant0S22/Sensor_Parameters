@@ -1,0 +1,41 @@
+---
+  #Indirizzo Ip Base Omron
+  host : ""
+  #Porta dove base ascolta per server telnet
+  port : ""
+  #Password Telnet
+  password : ""
+  #Nome Percorso 
+  patrolOnce : ""
+  #Quanti messaggi inviare al secondo
+  frequency_Hz : 0.5 
+  #Porta USB a cui è collegato il sensore
+  usb_port : "/dev/ttyUSB0" #Per Linux
+  #usb_port : "COM5" #Per Windows
+  #Valori range per approssimazione di n punti in un ramge in un singolo punto
+  range_x : 500
+  range_y : 500
+
+  numeroParametri : 7
+  #Valori range per assegnare una media dei valori ai punti nel range
+  range_x_medie : 1000
+  range_y_medie : 1000
+  #Peso da assegnare ad una misurazione anomala per effettuare una media ponderata
+  weight_anomaly : 10
+
+  #nomeIcone
+  icon_light : "lux-icon.png"
+  icon_therm : "therm-icon.png"
+  icon_warning : "warning-icon.png"
+
+  #Valori Soglia per ogni parametro per considerare una misurazione anomala rispetto alla media
+  #Calcolata in un range
+  thresholds_anomaly :
+    4 : 2 #Temp
+    5 : 10 #Humidity
+    6 : 250 #light
+    7 : 50 #pressure
+    8 : 50 #Noise
+    9 : 1000 #Etvoc
+    10 : 1000 #Eco2
+

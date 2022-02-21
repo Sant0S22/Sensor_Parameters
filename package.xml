@@ -2,7 +2,7 @@
 <package format="2">
   <name>sensor_omron</name>
   <version>1.0.0</version>
-  <description>Ros Package about Sensor Omron-2jcie-bu01 , made for take data from the sensor and elaborate them.</description>
+  <description>Ros Package about Sensor Omron-2jcie-bu01 , made for take data from the sensor and elaborate them on maps.</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -58,7 +58,18 @@
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
-
+  
+  <depend>omron_2jcie_bu01</depend>
+  <depend>matplotlib</depend>
+  <depend>numpy</depend>
+  <depend>psycopg2</depend>
+  <depend>pillow</depend>
+  <depend>telnetlib3</depend>
+  <depend>getpass3</depend>
+  <depend>opencv</depend>
+  <depend>db_persistence</depend>
+  <depend>PyYaml</depend>
+  <depend>read_yaml_file</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

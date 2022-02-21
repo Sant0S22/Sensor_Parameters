@@ -1,2 +1,2 @@
-# Sensor_Parameters
-Project that use Omron-2JCIE-BU01 for take parameters from the enviroment like temperature , humidity , sound noise ecc.
+# OmronSensor_Parameters
+Program with Sensor Omron2JCIE-BU01 used for take parameters like temperature , humidity , sound noise and light.

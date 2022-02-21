@@ -20,7 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-# catkin_python_setup()
+ catkin_python_setup()
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -103,8 +103,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES sensor_omron
+  INCLUDE_DIRS include src/
+  LIBRARIES sensor_omron
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -116,7 +116,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+ include src/
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -160,7 +160,7 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
-  scripts/my_python_script                          #QUA DEVI METTE GLI SCRIPT AMICO MIO
+src/sensor_omron/node/reader_parameters.py src/sensor_omron/node/reader_coordinates.py src/sensor_omron/node/merger.py src/sensor_omron/node/db_saver.py src/sensor_omron/node/db_cleaner.py src/script/maps_creator.py src/script/build_map.py src/script/manual_cleaner.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

@@ -1,0 +1,63 @@
+---
+  #Grandezza Immagine , Altezza e Larghezza
+  height : 450
+  width : 1880
+  #parametro di scalatura
+  scale : 45 
+  #Valore per azzerare coordinate negative x
+  shift_x : 5820 
+  #Valore per azzerare coordinate negative x
+  shift_y : 8260
+  #Valori di offset per cerare una certa distanza dai bordi dell'immagine
+  offset_x : 760
+  offset_y : 580
+  #Nome File input mappa e output
+  nome_file_map : "santorsa_thesis.map"
+  nome_file_output : "Map.png"
+
+  #enum    cv::ColormapTypes {
+  #cv::COLORMAP_AUTUMN = 0,
+  #cv::COLORMAP_BONE = 1,
+  #cv::COLORMAP_JET = 2,
+  #cv::COLORMAP_WINTER = 3,
+  #cv::COLORMAP_RAINBOW = 4,
+  #cv::COLORMAP_OCEAN = 5,
+  #cv::COLORMAP_SUMMER = 6,
+  #cv::COLORMAP_SPRING = 7,
+  #cv::COLORMAP_COOL = 8,
+  #cv::COLORMAP_HSV = 9,
+  #cv::COLORMAP_PINK = 10,
+  #cv::COLORMAP_HOT = 11,
+  #cv::COLORMAP_PARULA = 12,
+  #cv::COLORMAP_MAGMA = 13,
+  #cv::COLORMAP_INFERNO = 14,
+  #cv::COLORMAP_PLASMA = 15,
+  #cv::COLORMAP_VIRIDIS = 16,
+  #cv::COLORMAP_CIVIDIS = 17,
+  #cv::COLORMAP_TWILIGHT = 18,
+  #cv::COLORMAP_TWILIGHT_SHIFTED = 19,
+  #cv::COLORMAP_TURBO = 20,
+  #cv::COLORMAP_DEEPGREEN = 21
+#}
+
+  numeroParametri : 7
+  raggioCerchio : 25
+
+  params : 
+    1 : "Temperature" 
+    2 : "Humidity" 
+    3 : "Light"
+    4 : "Pressure" 
+    5 : "Noise" 
+    6 : "Etvoc" 
+    7 : "Eco2"
+
+  params_Max_Min : #Ultimo valore è colorazione colormap opencv
+    1 : [0,30,2] #Jet
+    2 : [0,100,3] #winter
+    #3 : [10,2000,1] #bone
+    3 : [10,1000,1] #bone
+    4 : [700,1100,0] #autumn
+    5 : [40,94,5] #ocean
+    6 : [0,32768,0] #autumn
+    7 : [0,32768,0] #autumn

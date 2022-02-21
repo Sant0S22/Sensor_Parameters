@@ -1,8 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 from configparser import ConfigParser
-
+import os
 
 def config(filename='database.ini', section='postgresql'):
+    dirname = os.path.dirname(__file__)
+    index = dirname.find("/src/sensor_omron/")
+    path = dirname[:index]
+    dirname = path + "/src/sensor_omron/cfg"
+    filename = os.path.join(dirname, 'database.ini') #Per Linux
     # create a parser
     parser = ConfigParser()
     # read config file

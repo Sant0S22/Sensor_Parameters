@@ -1,0 +1,39 @@
+---
+
+  #Nome Tabelle dove vengono salvati dati raw e "lavorati"
+  puntiTemporanea : "punti"
+  misureTemporanea : "misurazioni"
+  puntiClean : "puntiClean"
+  misureClean : "misurazioniClean"
+
+  #Usare String.format(valori) per sostituire valori a {}
+  sql_exist_position : "SELECT id FROM {} WHERE x = {} AND y = {}"
+
+  sql_insert_position : "INSERT INTO {} ( x , y ) values ( {} , {} ) RETURNING id;"
+
+  sql_insert_data_anomaly : "INSERT INTO {} 
+        ( temperature , data_misurazione , orario_misurazione , posizione_fk , anomaly , parameter_anomaly , humidity , light , pressure , noise , etvoc , eco2) 
+        values ( {} , '{}' , '{}' , {} , {} , '{}' , {} , {} , {} , {} , {} , {} ) RETURNING id; "
+
+  sql_insert_data : "INSERT INTO {} 
+        ( temperature , data_misurazione , orario_misurazione , posizione_fk , humidity , light , pressure , noise , etvoc , eco2) 
+        values ( {} , '{}' , '{}' , {} , {} , {} , {} , {} , {} , {} ) RETURNING id; "
+
+  #Sql query per cercare misurazioni in intervallo di tempo e intervallo coordinate
+  sql_query_range : "SELECT x , y ,data_misurazione , orario_misurazione, temperature , humidity , light , pressure , noise , etvoc , eco2 FROM {} , {} WHERE {}.posizione_fk = {}.id AND (data_misurazione BETWEEN '{}' AND '{}') AND orario_misurazione BETWEEN '{}' AND '{}' AND 
+    ( x BETWEEN {} AND {} ) AND ( y BETWEEN {} AND {} )"
+  
+  sql_query_range_data : "SELECT x , y , temperature , humidity , light , pressure , noise , etvoc , eco2 , data_misurazione , orario_misurazione FROM {} , {} WHERE {}.posizione_fk = {}.id AND (data_misurazione BETWEEN '{}' AND '{}') AND orario_misurazione BETWEEN '{}' AND '{}' ORDER BY orario_misurazione"
+
+  sql_insert_patrol : "INSERT INTO {} ( data_inizio , orario_inizio ,  data_fine , orario_fine ) values ( '{}' , '{}' , '{}' , '{}' ) RETURNING id;"
+
+  sql_max_min : "SELECT min(x) , max(x) , min(y) , max(y) FROM {} , {}  WHERE {}.id = {}.posizione_fk AND (data_misurazione BETWEEN '{}' AND '{}') AND orario_misurazione BETWEEN '{}' AND '{}' "
+
+  sql_crea_misurazioni : "CREATE TABLE {} ( id serial primary key, temperature real , humidity real , light real , pressure real , 
+    noise real , etvoc real , eco2 real ,data_misurazione date , orario_misurazione time ,posizione_fk serial references tmpPunti(id) on update cascade );" 
+
+  sql_crea_punti : "CREATE TABLE {} ( id serial primary key , x integer , y integer);" 
+
+  sql_find_patrol : "SELECT data_inizio , data_fine , orario_inizio , orario_fine FROM {} WHERE data_inizio = '{}' AND orario_inizio > '{}' ORDER BY data_inizio"
+
+  sql_find_anomaly : "SELECT x , y , parameter_anomaly FROM {} , {} WHERE {}.id = {}.posizione_fk AND anomaly = True AND (data_misurazione BETWEEN '{}' AND '{}') AND orario_misurazione BETWEEN '{}' AND '{}'"

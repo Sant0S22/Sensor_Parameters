@@ -1,0 +1,7 @@
+<launch>
+<node name="Reader_Parameters" pkg="sensor_omron" type="reader_parameters.py" output="screen"/>
+<node name="Reader_Coordinates" pkg="sensor_omron" type="reader_coordinates.py" output="screen"/>
+<node name="Merge" pkg="sensor_omron" type="merger.py" output="screen"/>
+<node name="Save_Dates_on_DB" pkg="sensor_omron" type="db_saver.py" output="screen"/>
+<node name="Db_Cleaner" pkg="sensor_omron" type="db_cleaner.py" output="screen"/>
+</launch>

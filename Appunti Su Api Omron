@@ -1,0 +1,34 @@
+# sensor.latest_data_long() ->
+#
+#    seq: Sequence number (UInt8)
+#    temperature: Temerature (SInt16); 0.01 degC
+#    humidity: Relative humidity (SInt16); 0.01 %RH
+#    light: Ambient light (SInt16); 1 lx
+#    pressure: Barometric pressure (SInt32); 0.001 hPa
+#    noise: Sound noise (SInt16); 0.01 dB
+#    eTVOC: eTVOC (SInt16); 1 ppb                          -> equivalent total volatile organic compounds
+#    eCO2: eCO2 (SInt16); 1 ppm                            -> Equivalent concentration of Co2 in the air
+#    thi: Discomfort index; THI (SInt16); 0.01             -> Indice di "disagio" Calcolato con un rapporto fra temperatiura e umidità
+#    wbgt: Heat stroke; WBGT (SInt16); 0.01 degC
+#    vibration: Vibration information (UInt8); See Table 124
+#    si: SI value (UInt16); 0.1 kine
+#    pga: PGA (UInt16); 0.1 gal
+#    seismic_intensity: Seismic intensity (UInt16); 0.001
+
+#print("------------------------------------------------")
+#print(f" Date                : {dt.strftime('%Y-%m-%d %H:%M:%S%z')}")
+#print(f" Sequence Number     : {info.seq}")
+#print(f" Temperature         : {info.temperature} degC")
+#print(f" Relative humidity   : {info.humidity} %RH")
+#print(f" Ambient light       : {info.light} lx")
+#print(f" Barometric pressure : {info.pressure} hPa")
+#print(f" Sound noise         : {info.noise} dB")
+#print(f" eTVOC               : {info.eTVOC} ppb")
+#print(f" eCO2                : {info.eCO2} ppm")
+#print(f" Discomfort index    : {info.thi}")
+#print(f" Heat stroke         : {info.wbgt} degC")
+#print(f" Vibration info      : {s.VI[info.vibration]}")
+#print(f" SI value            : {info.si} kine")
+#print(f" PGA                 : {info.pga} gal")
+#print(f" Seismic intensity   : {info.seismic_intensity}")
+#print("================================================")

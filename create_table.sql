@@ -20,6 +20,27 @@ create table misurazioni(
 	posizione_fk serial references punti(id) on update cascade 
 );
 
+create table puntiClear( 
+	x integer,
+	y integer,
+	id serial primary key
+);
+
+create table misurazioniClear(
+	id serial primary key,
+	temperature real ,
+	humidity real ,
+	light real ,
+	pressure real ,
+	noise real ,
+	etvoc real ,
+	eco2 real ,
+	data_misurazione date ,
+	orario_misurazione time ,
+	anomalia bool ,
+	parameter_anomaly varchar(20) ,
+	posizione_fk serial references punti(id) on update cascade 
+);
 create table giroBuccino (
 	id serial primary key ,
 	data_inizio date ,

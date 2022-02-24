@@ -102,8 +102,8 @@ class Db_Cleaner :
     #Quando finiscono le misurazioni inizia l'esecuzione
     def callback_end ( self , data ) :
         time.sleep(5)
-        #self.cleanData(data)
-        self.cleanData("11/02/2022 10:15:00-11/02/2022 10:30:00")
+        self.cleanData(data.data)
+        #self.cleanData("11/02/2022 10:15:00-11/02/2022 10:30:00")
 
     def chiudiConnessione ( self ) :
         self.db_persistence.close_db()

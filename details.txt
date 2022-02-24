@@ -5,5 +5,5 @@ pip install opencv-python
 pip install psycopg2
 pip install Pillow
 pip install telnetlib3
-pip install getpass3
 pip install PyYaml
+pip install copy
